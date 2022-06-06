@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import Card from './card'
 
 // data
-import { getInitialData, showFormattedDate } from '../utils/data'
+import { getInitialData } from '../utils/data'
 
 const OutputComponent = (props) => {
     let myData = getInitialData()
@@ -54,56 +55,36 @@ const OutputComponent = (props) => {
     }
 
     return (
-        <div className='max-w-[300px] p-1'>
+        <div className='max-w-[300px] p-1 mb-5'>
             <h2 className='font-semibold text-xl mb-5'>Your Notes</h2>
 
-            <div className='min-w-[250px] border rounded-lg border-[#211E2D] dark:border-slate-50'>
-                <div className='flex w-full justify-between'>
-                    <button onClick={() => setArchived(false)} className={!archived ? 'w-1/2 border-b-2 border-[#211E2D] dark:border-slate-50' : 'w-1/2 mb-[2px]'} >Active</button>
-                    <button onClick={() => setArchived(true)} className={archived ? 'w-1/2 border-b-2 border-[#211E2D] dark:border-slate-50' : 'w-1/2 mb-[2px]'} >Archive</button>
+            <div className='min-w-[250px] bg-slate-400 dark:bg-[#1d182c] rounded-lg'>
+                <div className='flex w-full rounded-t-lg bg-white dark:bg-[#3F3B51] justify-between'>
+                    <button onClick={() => setArchived(false)} className={!archived ? 'w-1/2 py-2 border-b-2 border-[#211E2D] dark:border-slate-50' : ' py-2 w-1/2 mb-[2px]'} >Active</button>
+                    <button onClick={() => setArchived(true)} className={archived ? 'w-1/2 py-2 border-b-2 border-[#211E2D] dark:border-slate-50' : ' py-2 w-1/2 mb-[2px]'} >Archive</button>
                 </div>
 
                 <div className='flex p-2 w-full overflow-x-scroll'>
                     {
                         archived === false ?
                             dataUnArchived.length === 0 ?
-                                <p>Tidak ada data</p> :
+                                <div className='w-full text-white  text-center'>
+                                    <p>No More Data</p>
+                                </div> :
                                 allData
                                     .filter((data) => data.title.toLowerCase().includes(valueSearch.toLowerCase()))
                                     .map((res, index) =>
-                                        <div key={index} style={res.archived !== archived ? { display: 'none' } : {}} className='flex flex-col justify-between rounded-lg bg-white dark:bg-[#2D2D3D] border border-[#211E2D] dark:border-slate-50 min-w-[260px] m-2'>
-                                            <div className='w-full border-b-2 border-[#211E2D] dark:border-slate-50'>
-                                                <h1 className='font-semibold p-2'>{res.title}</h1>
-                                                <p className='font-thin pl-2 text-sm'>{showFormattedDate(res.createdAt)}</p>
-                                            </div>
-
-                                            <p className='m-2'>{res.body}</p>
-
-                                            <div className='flex w-full justify-between'>
-                                                <button onClick={() => handleDelete(res.id)} className='w-1/2 border-t-2 border-r-2 pr-[2px] py-2 border-[#211E2D] dark:border-slate-50 text-red-600'>Delete</button>
-                                                <button onClick={() => !res.archived ? handleArchive(res.id) : handleUnArchived(res.id)} className='w-1/2 border-t-2 py-2 border-[#211E2D] dark:border-slate-50 text-yellow-600'>{!res.archived ? 'Archive' : 'Unarchived'}</button>
-                                            </div>
-                                        </div>
+                                        <Card key={index} data={res} archived={archived} handleDelete={handleDelete} handleArchive={handleArchive} handleUnArchived={handleUnArchived} />
                                     )
                             :
                             dataArchived.length === 0 ?
-                                <p>Tidak ada data</p> :
+                                <div className='w-full text-white text-center'>
+                                    <p>No More Data</p>
+                                </div> :
                                 allData
                                     .filter((data) => data.title.toLowerCase().includes(valueSearch.toLowerCase()))
                                     .map((res, index) =>
-                                        <div key={index} style={res.archived !== archived ? { display: 'none' } : {}} className='flex flex-col justify-between rounded-lg bg-white dark:bg-[#2D2D3D] border border-[#211E2D] dark:border-slate-50 min-w-[260px] m-2'>
-                                            <div className='w-full border-b-2 border-[#211E2D] dark:border-slate-50'>
-                                                <h1 className='font-semibold p-2'>{res.title}</h1>
-                                                <p className='font-thin pl-2 text-sm'>{showFormattedDate(res.createdAt)}</p>
-                                            </div>
-
-                                            <p className='m-2'>{res.body}</p>
-
-                                            <div className='flex w-full justify-between'>
-                                                <button onClick={() => handleDelete(res.id)} className='w-1/2 border-t-2 border-r-2 pr-[2px] py-2 border-[#211E2D] dark:border-slate-50 text-red-600'>Delete</button>
-                                                <button onClick={() => !res.archived ? handleArchive(res.id) : handleUnArchived(res.id)} className='w-1/2 border-t-2 py-2 border-[#211E2D] dark:border-slate-50 text-yellow-600'>{!res.archived ? 'Archive' : 'Unarchived'}</button>
-                                            </div>
-                                        </div>
+                                        <Card key={index} data={res} archived={archived} handleDelete={handleDelete} handleArchive={handleArchive} handleUnArchived={handleUnArchived} />
                                     )
                     }
                 </div>

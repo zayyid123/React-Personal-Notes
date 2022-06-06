@@ -28,7 +28,7 @@ const InputComponent = ({ handleAddNewNote }) => {
     }
 
     return (
-        <div className='max-w-[400px] p-1'>
+        <div className='max-w-[400px] p-1 mb-5'>
             <h2 className='font-semibold text-xl mb-5'>Make Notes</h2>
 
             <p className='font-thin text-right'>Character Available: {limit}</p>
