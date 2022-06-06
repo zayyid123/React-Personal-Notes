@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/React-Personal-Notes/static/css/main.295eeadc.css",
-    "main.js": "/React-Personal-Notes/static/js/main.9fdddf61.js",
+    "main.css": "/React-Personal-Notes/static/css/main.91c2d7d9.css",
+    "main.js": "/React-Personal-Notes/static/js/main.3dbdda83.js",
     "static/media/light-mode.png": "/React-Personal-Notes/static/media/light-mode.8b49bce8c757f3b43b89.png",
     "static/media/night-mode.png": "/React-Personal-Notes/static/media/night-mode.7f5984cf938931c17454.png",
     "index.html": "/React-Personal-Notes/index.html",
-    "main.295eeadc.css.map": "/React-Personal-Notes/static/css/main.295eeadc.css.map",
-    "main.9fdddf61.js.map": "/React-Personal-Notes/static/js/main.9fdddf61.js.map"
+    "main.91c2d7d9.css.map": "/React-Personal-Notes/static/css/main.91c2d7d9.css.map",
+    "main.3dbdda83.js.map": "/React-Personal-Notes/static/js/main.3dbdda83.js.map"
   },
   "entrypoints": [
-    "static/css/main.295eeadc.css",
-    "static/js/main.9fdddf61.js"
+    "static/css/main.91c2d7d9.css",
+    "static/js/main.3dbdda83.js"
   ]
 }
